@@ -354,8 +354,8 @@ if page == "📊 Dashboard":
             return [""]*len(row)
 
         styled = (df.style
-            .applymap(color_load, subset=["Load %"])
-            .applymap(color_bal, subset=["Balance (MT)"])
+            .map(color_load, subset=["Load %"])
+            .map(color_bal, subset=["Balance (MT)"])
             .apply(color_row, axis=1)
         )
         st.dataframe(styled, use_container_width=True, hide_index=True)
@@ -788,7 +788,7 @@ elif page == "⊞ Vendor Master":
         return f"color:{c};font-weight:700"
 
     if not df.empty:
-        styled = df.style.applymap(color_pct, subset=["Load %"]).applymap(color_bal, subset=["Balance"])
+        styled = df.style.map(color_pct, subset=["Load %"]).map(color_bal, subset=["Balance"])
         st.dataframe(styled, use_container_width=True, hide_index=True)
 
 # ════════════════════════════════════════════════════════════
